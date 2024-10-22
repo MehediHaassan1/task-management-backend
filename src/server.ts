@@ -1,6 +1,17 @@
+import mongoose from 'mongoose';
 import app from './app';
-const PORT = process.env.PORT || 5000;
+import config from './app/config';
 
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
+
+async function main() {
+    try {
+        await mongoose.connect(config.db_url as string);
+        app.listen(config.port, () => {
+            console.log(`Server running port ${config.port}!`)
+        })
+    } catch (err: any) {
+        throw new Error(err.message)
+    }
+}
+
+main()
