@@ -15,7 +15,7 @@ const createTask = catchAsync(async(req, res) => {
 
  // Get all tasks
 const getTasks = catchAsync(async (req, res) => {
-
+    console.log(req.query)
       const { search = '', status = 'All', priority = 'All', tag = 'All' } = req.query;
       
       const tasks = await TaskServices.getTasksFromDB( 

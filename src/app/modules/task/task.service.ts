@@ -7,7 +7,7 @@ const createTaskIntoDB = async(data:ITask) => {
 }
 
 const getTasksFromDB = async (search:string, status:string, priority:string, tag:string) =>{
-  let query:any;
+  let query:any = {};
 
   if (search) {
       query.$or = [
